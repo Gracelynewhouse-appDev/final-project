@@ -48,11 +48,11 @@
         </td>
 
         <td>
-          <%= model_competancy.model_id %>
+          <%= Model.find( model_competancy.model_id).name %>
         </td>
 
         <td>
-          <%= model_competancy.user_id %>
+          <%= User.find(model_competancy.user_id).username %>
         </td>
 
         <td>

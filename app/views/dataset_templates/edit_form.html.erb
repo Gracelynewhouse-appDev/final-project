@@ -5,22 +5,45 @@
 <hr>
 
 <form action="/update_dataset/<%= @dataset.id %>" method="post">
+  <div class="form-group">
+    <label for="name">
+      Name
+    </label>
 
+    <input type="text" id="name" name="name" class="form-control" value="<%= @dataset.name %>">
+  </div>
+  
   <div class="form-group">
     <label for="data_type">
       Data type
     </label>
 
-    <input type="text" id="data_type" name="data_type" class="form-control" value="<%= @dataset.data_type %>">
-  </div>
+    <%= select_tag "data_type", options_for_select([
+      [ 'mix of strings bools and floats', 'mix of strings bools and floats'],
+          ['string', 'string'], 
+          ['bool', 'bool'], 
+          ['time-series', 'time-series'], 
+          ['image', 'image'], 
+          ['high-dimetional vector space',  'high-dimetional vector space'],
+          ['mix of simple and complex data types', 'mix of simple and complex data types'],
+          ['multiple complex data types', 'multiple complex data types'], 
+          ['other', 'other' ]], selected: @dataset.data_type ) %>
+          </div>
 
   <div class="form-group">
     <label for="number_rows">
       Number rows
     </label>
 
-    <input type="text" id="number_rows" name="number_rows" class="form-control" value="<%= @dataset.number_rows %>">
-  </div>
+     <%= select_tag "number_rows", options_for_select([
+      [ 'About 10,000 rows', 10000],
+          ['Around 50,000 rows', 50000], 
+          ['Around 100,000 rows', 100000], 
+          ['Around 500,000 rows', 500000], 
+          ['Around 1 million rows', 1000000], 
+          ['Around 3 million rows',  3000000],
+          ['over 5 million rows', 5000000]], selected: @dataset.number_rows) %>
+          </div>
 
   <button class="btn btn-block btn-outline-secondary">
     Update dataset

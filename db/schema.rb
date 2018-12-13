@@ -43,32 +43,12 @@ ActiveRecord::Schema.define(version: 20181213160653) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  create_table "cuisines", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "datasets", force: :cascade do |t|
     t.string "data_type"
     t.integer "number_rows"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
-  end
-
-  create_table "dishes", force: :cascade do |t|
-    t.string "name"
-    t.integer "menu_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "menus", force: :cascade do |t|
-    t.integer "restaurant_id"
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "model_competancies", force: :cascade do |t|
@@ -82,24 +62,6 @@ ActiveRecord::Schema.define(version: 20181213160653) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "orders", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "dish_id"
-    t.string "user_comment"
-    t.integer "restaurant_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "menu_id"
-  end
-
-  create_table "restaurants", force: :cascade do |t|
-    t.string "name"
-    t.integer "cuisine_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "menu_id"
   end
 
   create_table "training_runs", force: :cascade do |t|

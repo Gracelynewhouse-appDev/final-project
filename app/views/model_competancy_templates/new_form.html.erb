@@ -8,20 +8,15 @@
 <form action="/create_model_competancy" method="post">
 
   <div class="form-group">
-    <label for="model_id">
-      Model
-    </label>
+          <label for="model_id">
+            Model
+          </label>
 
-    <input type="text" id="model_id" name="model_id" class="form-control">
-  </div>
+          <%= select_tag("model_id", options_from_collection_for_select(Model.all, :id, :name), :class => "form-control") %>
+          or <a href="/models/new">add a new model</a> first
+        </div>
 
-  <div class="form-group">
-    <label for="user_id">
-      User
-    </label>
-
-    <input type="text" id="user_id" name="user_id" class="form-control">
-  </div>
+   <input type="hidden" name="user_id" value="<%= current_user.id %>">
 
   <button class="btn btn-block btn-outline-secondary">
     Create model competancy

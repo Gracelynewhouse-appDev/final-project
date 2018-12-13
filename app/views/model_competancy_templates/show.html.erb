@@ -29,21 +29,30 @@
         Model
       </dt>
       <dd>
-        <%= @model_competancy.model_id %>
+        <%= Model.find( @model_competancy.model_id).name %>
       </dd>
 
       <dt>
         User
       </dt>
       <dd>
-        <%= @model_competancy.user_id %>
+        <%= User.find(@model_competancy.user_id).username %>
       </dd>
 
-      <dt>
-        Created at
+       <dt>
+        Number of models <%= User.find(@model_competancy.user_id).username %> has under their belt:
       </dt>
       <dd>
-        <%= time_ago_in_words(@model_competancy.created_at) %> ago
+        <%= ModelCompetancy.where(:user_id => @model_competancy.user_id).count %>
+      </dd>
+      
+      <dt>
+        Number of users who can use <a href="/models/<%= @model_competancy.model_id %>">
+          <%= Model.find(@model_competancy.model_id).name %> </a>  
+          has under their belt: 
+      </dt>
+      <dd>
+        <%= ModelCompetancy.where(:model_id => @model_competancy.model_id).count %>
       </dd>
 
       <dt>
