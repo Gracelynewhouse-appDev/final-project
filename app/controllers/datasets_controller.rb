@@ -21,6 +21,7 @@ class DatasetsController < ApplicationController
     @dataset = Dataset.new
 
     @dataset.data_type = params.fetch("data_type")
+    @dataset.name = params.fetch("name")
     @dataset.number_rows = params.fetch("number_rows")
 
     if @dataset.valid?

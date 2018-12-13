@@ -14,7 +14,9 @@
 class TrainingRun < ApplicationRecord
    belongs_to :model
     belongs_to :dataset
-    validates :iteration, :inclusion => { :in => [ '"first"', 
-  '"second"', '"third"', '"fourth"', '"fifth"', '"sixth"', 
-  '"seventh"', '"eighth"', '"ninth"', '"tenth or higher"' ] }
+    validates :accuracy_score, :numericality => { :greater_than => 0 }
+    validates :iteration, :inclusion => { :in => [ 'first', 
+  'second', 'third', 'fourth', 'fifth', 'sixth', 
+  'seventh', 'eighth', 'ninth', 'tenth or higher' ] }
+  
 end

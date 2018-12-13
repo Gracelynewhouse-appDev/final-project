@@ -4,13 +4,15 @@
 #
 #  id          :integer          not null, primary key
 #  data_type   :string
-#  number_rows :integer
+#  number_rows :float
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  name        :string
 #
 
 class Dataset < ApplicationRecord
   has_many :training_runs
-  validates :number_rows, :numericality => { :greater_than => 0 }
+  validates :name, :presence => true, :uniqueness => true
+  validates :number_rows, :presence => true, :numericality => { :greater_than => 0 }
   validates :data_type, :presence => true
 end

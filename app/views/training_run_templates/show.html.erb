@@ -29,14 +29,14 @@
         Model
       </dt>
       <dd>
-        <%= @training_run.model_id %>
+        <%= Model.find(@training_run.model_id).name %>
       </dd>
 
       <dt>
         Dataset
       </dt>
       <dd>
-        <%= @training_run.dataset_id %>
+        <%= Dataset.find(@training_run.dataset_id).name %>
       </dd>
 
       <dt>
@@ -52,12 +52,19 @@
       <dd>
         <%= @training_run.accuracy_score %>
       </dd>
-
-      <dt>
-        Created at
+      
+       <dt>
+        Number of models trained with this dataset:
       </dt>
       <dd>
-        <%= time_ago_in_words(@training_run.created_at) %> ago
+        <%= TrainingRun.where(:dataset_id => @training_run.dataset.id).count %>
+      </dd>
+      
+      <dt>
+        Number of datasets this model has been trained on:
+      </dt>
+      <dd>
+        <%= TrainingRun.where(:model_id => @training_run.model.id).count %>
       </dd>
 
       <dt>

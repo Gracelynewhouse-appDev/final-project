@@ -37,9 +37,6 @@
           Accuracy score
         </th>
 
-        <th>
-          Created at
-        </th>
 
         <th>
           Updated at
@@ -56,11 +53,11 @@
         </td>
 
         <td>
-          <%= training_run.model_id %>
+          <%= Model.find(training_run.model_id).name %>
         </td>
 
         <td>
-          <%= training_run.dataset_id %>
+          <%= Dataset.find(training_run.dataset_id).name %>
         </td>
 
         <td>
@@ -71,9 +68,7 @@
           <%= training_run.accuracy_score %>
         </td>
 
-        <td>
-          <%= time_ago_in_words(training_run.created_at) %> ago
-        </td>
+        
         <td>
           <%= time_ago_in_words(training_run.updated_at) %> ago
         </td>

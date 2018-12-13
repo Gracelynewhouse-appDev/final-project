@@ -38,6 +38,73 @@
       <dd>
         <%= @dataset.number_rows %>
       </dd>
+      
+       <dl>
+      <dt>
+        Name
+      </dt>
+      <dd>
+        <%= @dataset.name %>
+      </dd>
+      
+      <dt>
+        Number of Training Runs
+      </dt>
+      <dd>
+        <%= TrainingRun.where(:dataset_id => @dataset.id).count %>
+      </dd>
+     <div class="card-header">
+    Add a new training run for this dataset
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item">
+      <form action="/create_training_run" method="post" >
+        
+        <div class="form-group">
+          
+          <label for="iteration">
+            Iteration
+          </label>
+          <%= select_tag "iteration", options_for_select([[ 'first', 'first'],
+          ['second', 'second'], 
+          ['third', 'third'], 
+          ['fourth', 'fourth'], 
+          ['fifth', 'fifth'], 
+          ['sixth',  'sixth'],
+          ['seventh', 'seventh'],
+          ['eighth', 'eighth'], 
+          ['ninth', 'ninth'], 
+          ['tenth or higher' , 'tenth or higher' ]]) %>
+          
+         <div class="form-group">
+          <label for="model_id">
+            Model
+          </label>
+
+          <%= select_tag("model_id", options_from_collection_for_select(Model.all, :id, :name), :class => "form-control") %>
+          or <a href="/models/new">add a new model</a> first
+        </div>
+        
+        </div>
+         <div class="form-group">
+          <label for="accuracy_score">
+            Accuracy Score
+          </label>
+
+          <input type="float" id="accuracy_score" name="accuracy_score" class="form-control">
+        </div>
+
+        <!-- Label and input for client_id -->
+        <input type="hidden" name="dataset_id" value="<%= @dataset.id %>">
+
+        <button class="btn btn-block btn-outline-secondary">
+          Create Training Run
+        </button>
+      </form>
+    </li>
+  </ul>
+</div>
+
 
       <dt>
         Created at
