@@ -1,0 +1,42 @@
+<% if @dataset.errors.any? %>
+  <% @dataset.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<h1>
+  Edit dataset #<%= @dataset.id %>
+</h1>
+
+<hr>
+
+<form action="/update_dataset/<%= @dataset.id %>" method="post">
+
+  <div class="form-group">
+    <label for="data_type">
+      Data type
+    </label>
+
+    <input type="text" id="data_type" name="data_type" class="form-control" value="<%= @dataset.data_type %>">
+  </div>
+
+  <div class="form-group">
+    <label for="number_rows">
+      Number rows
+    </label>
+
+    <input type="text" id="number_rows" name="number_rows" class="form-control" value="<%= @dataset.number_rows %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update dataset
+  </button>
+</form>
+
+<hr>
+
+<a href="/datasets">
+  Go back
+</a>

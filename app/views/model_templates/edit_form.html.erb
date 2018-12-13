@@ -1,0 +1,26 @@
+<h1>
+  Edit model #<%= @model.id %>
+</h1>
+
+<hr>
+
+<form action="/update_model/<%= @model.id %>" method="post">
+
+  <div class="form-group">
+    <label for="name">
+      Name
+    </label>
+
+    <input type="text" id="name" name="name" class="form-control" value="<%= @model.name %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update model
+  </button>
+</form>
+
+<hr>
+
+<a href="/models">
+  Go back
+</a>

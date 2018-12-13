@@ -1,0 +1,58 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Model competancy #<%= @model_competancy.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/model_competancies" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/model_competancies/<%= @model_competancy.id %>/edit" class="btn btn-block btn-outline-secondary">
+          Edit model competancy
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_model_competancy/<%= @model_competancy.id %>" class="btn btn-block btn-outline-secondary">
+          Delete model competancy
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Model
+      </dt>
+      <dd>
+        <%= @model_competancy.model_id %>
+      </dd>
+
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @model_competancy.user_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@model_competancy.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@model_competancy.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+

@@ -1,0 +1,58 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Dataset #<%= @dataset.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/datasets" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/datasets/<%= @dataset.id %>/edit" class="btn btn-block btn-outline-secondary">
+          Edit dataset
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_dataset/<%= @dataset.id %>" class="btn btn-block btn-outline-secondary">
+          Delete dataset
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Data type
+      </dt>
+      <dd>
+        <%= @dataset.data_type %>
+      </dd>
+
+      <dt>
+        Number rows
+      </dt>
+      <dd>
+        <%= @dataset.number_rows %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@dataset.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@dataset.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+

@@ -1,0 +1,50 @@
+<h1>
+  Edit training run #<%= @training_run.id %>
+</h1>
+
+<hr>
+
+<form action="/update_training_run/<%= @training_run.id %>" method="post">
+
+  <div class="form-group">
+    <label for="model_id">
+      Model
+    </label>
+
+    <input type="text" id="model_id" name="model_id" class="form-control" value="<%= @training_run.model_id %>">
+  </div>
+
+  <div class="form-group">
+    <label for="dataset_id">
+      Dataset
+    </label>
+
+    <input type="text" id="dataset_id" name="dataset_id" class="form-control" value="<%= @training_run.dataset_id %>">
+  </div>
+
+  <div class="form-group">
+    <label for="iteration">
+      Iteration
+    </label>
+
+    <input type="text" id="iteration" name="iteration" class="form-control" value="<%= @training_run.iteration %>">
+  </div>
+
+  <div class="form-group">
+    <label for="accuracy_score">
+      Accuracy score
+    </label>
+
+    <input type="text" id="accuracy_score" name="accuracy_score" class="form-control" value="<%= @training_run.accuracy_score %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update training run
+  </button>
+</form>
+
+<hr>
+
+<a href="/training_runs">
+  Go back
+</a>

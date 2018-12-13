@@ -1,0 +1,74 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      All model competancies
+    </h1>
+
+    <a href="/model_competancies/new" class="btn btn-block btn-outline-secondary">
+      Add a new model competancy
+    </a>
+  </div>
+</div>
+
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Model
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @model_competancies.each do |model_competancy| %>
+      <tr>
+        <td>
+          <%= model_competancy.id %>
+        </td>
+
+        <td>
+          <%= model_competancy.model_id %>
+        </td>
+
+        <td>
+          <%= model_competancy.user_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(model_competancy.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(model_competancy.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/model_competancies/<%= model_competancy.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<% if @model_competancy.errors.any? %>
+  <% @model_competancy.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<h1>
+  Edit model competancy #<%= @model_competancy.id %>
+</h1>
+
+<hr>
+
+<form action="/update_model_competancy/<%= @model_competancy.id %>" method="post">
+
+  <div class="form-group">
+    <label for="model_id">
+      Model
+    </label>
+
+    <input type="text" id="model_id" name="model_id" class="form-control" value="<%= @model_competancy.model_id %>">
+  </div>
+
+  <div class="form-group">
+    <label for="user_id">
+      User
+    </label>
+
+    <input type="text" id="user_id" name="user_id" class="form-control" value="<%= @model_competancy.user_id %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update model competancy
+  </button>
+</form>
+
+<hr>
+
+<a href="/model_competancies">
+  Go back
+</a>
