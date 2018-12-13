@@ -15,28 +15,44 @@
 <form action="/update_training_run/<%= @training_run.id %>" method="post">
 
   <div class="form-group">
-    <label for="model_id">
-      Model
-    </label>
+          <label for="model_id">
+            Change Model from <a href= "/models/<%=@training_run.model_id %>">
+            <%= Model.find(@training_run.model_id).name %> </a> to:
+          </label>
 
-    <input type="text" id="model_id" name="model_id" class="form-control" value="<%= @training_run.model_id %>">
-  </div>
-
-  <div class="form-group">
-    <label for="dataset_id">
-      Dataset
-    </label>
-
-    <input type="text" id="dataset_id" name="dataset_id" class="form-control" value="<%= @training_run.dataset_id %>">
-  </div>
+          <%= select_tag("model_id", options_from_collection_for_select(Model.where.not(id: @training_run.model_id),
+          :id, :name), :class => "form-control") %>
+          or <a href="/models/new">add a new model</a> first
+        </div>
 
   <div class="form-group">
-    <label for="iteration">
-      Iteration
-    </label>
+          <label for="dataset_id">
+           Change Dataset from <a href= "/datasets/<%=@training_run.dataset_id %>">
+            <%= Dataset.find(@training_run.dataset_id).name %> </a> to:
+          </label>
 
-    <input type="text" id="iteration" name="iteration" class="form-control" value="<%= @training_run.iteration %>">
-  </div>
+          <%= select_tag("dataset_id", options_from_collection_for_select(Dataset.where.not(id: @training_run.dataset_id),
+          :id, :name), :class => "form-control") %>
+          or <a href="/datasets/new">add a new dataset</a> first
+        </div>
+
+
+  <div class="form-group">
+     <label for="iteration">
+            Iteration
+          </label>
+          <%= select_tag "iteration", options_for_select([[ 'first', 'first'],
+          ['second', 'second'], 
+          ['third', 'third'], 
+          ['fourth', 'fourth'], 
+          ['fifth', 'fifth'], 
+          ['sixth',  'sixth'],
+          ['seventh', 'seventh'],
+          ['eighth', 'eighth'], 
+          ['ninth', 'ninth'], 
+          ['tenth or higher' , 'tenth or higher' ]], 
+          selected: @training_run.iteration) %>
+            </div>
 
   <div class="form-group">
     <label for="accuracy_score">

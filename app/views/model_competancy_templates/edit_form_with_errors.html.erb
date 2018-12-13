@@ -13,26 +13,30 @@
 <hr>
 
 <form action="/update_model_competancy/<%= @model_competancy.id %>" method="post">
+<% if @model_competancy.user_id ==current_user.id %>
+ <div class="form-group">
+          <label for="model_id">
+            Change Model from <a href= "/models/<%=@model_competancy.model_id %>">
+            <%= Model.find(@model_competancy.model_id).name %> </a> to:
+          </label>
 
-  <div class="form-group">
-    <label for="model_id">
-      Model
-    </label>
-
-    <input type="text" id="model_id" name="model_id" class="form-control" value="<%= @model_competancy.model_id %>">
-  </div>
-
-  <div class="form-group">
-    <label for="user_id">
-      User
-    </label>
-
-    <input type="text" id="user_id" name="user_id" class="form-control" value="<%= @model_competancy.user_id %>">
-  </div>
-
-  <button class="btn btn-block btn-outline-secondary">
+          <%= select_tag("model_id", options_from_collection_for_select(Model.where.not(id: @model_competancy.model_id),
+          :id, :name), :class => "form-control") %>
+          or <a href="/models/new">add a new model</a> first
+        </div>
+            <input type="hidden" id="user_id" name="user_id" class="form-control" value="<%= @model_competancy.user_id %>">
+       <button class="btn btn-block btn-outline-secondary">
     Update model competancy
   </button>
+  
+<% else %>
+  <div class="form-group">
+    <label for="user_id">
+     Sorry <%= User.find(current_user.id).username %> ... You are only able to edit or delete your own competancies.
+    </label>
+  </div>
+  <% end %>
+
 </form>
 
 <hr>
