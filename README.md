@@ -1,5 +1,8 @@
 # Final Project
+## This is a simple web application to relate users, machine learning models, data, and trainign runs.
 
-This is a blank Rails application to use as a starting point for your project.
+It was built using Devise and a data model originally conceived of using ideas.firstdraft.com.
 
-Fork it to your own account, set up a Cloud9 workspace as usual, `bin/setup`, Run Project, and code away!
+Built by: Gracelyn Newhouse for AppDev class at Chicago Booth, Fall quarter 2018.
+
+All rights reserved.
